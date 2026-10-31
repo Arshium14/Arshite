@@ -1,0 +1,26 @@
+{
+  "tasks": {
+    "dev": "deno run --watch=src --unstable-kv --unstable-cron --env-file=.env --allow-env --allow-net --allow-read --allow-write src/main.ts",
+    "fmt": "deno fmt",
+    "fmt:check": "deno fmt --check",
+    "lint": "deno lint",
+    "check": "deno check --unstable-kv --unstable-cron src/main.ts tests/*.ts",
+    "test": "deno test --unstable-kv --allow-env tests/",
+    "verify": "deno task fmt:check && deno task lint && deno task check && deno task test"
+  },
+  "fmt": {
+    "include": ["src/", "tests/", "deno.json", "README.md"],
+    "exclude": [".superpowers/", "docs/"]
+  },
+  "lint": {
+    "include": ["src/", "tests/", "deno.json", "README.md"],
+    "exclude": [".superpowers/", "docs/"]
+  },
+  "imports": {
+    "@octokit/app": "npm:@octokit/app@^16.1.4",
+    "@std/assert": "jsr:@std/assert@^1.0.13",
+    "@std/yaml": "jsr:@std/yaml@^1.0.8",
+    "octokit": "npm:octokit@^5.0.5",
+    "zod": "npm:zod@^4.1.12"
+  }
+}
