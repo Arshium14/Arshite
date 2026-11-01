@@ -114,7 +114,9 @@ Set only one private-key variable. If both are present, Arshite uses
    the private key.
 2. In Deno Deploy, create a project using the Git integration and select that
    repository.
-3. Set the entry point to `src/main.ts` and deploy it.
+3. Set the entry point to `src/main.ts` and deploy it. In the app's
+   **Databases** tab, create or attach a KV database; `Deno.openKv()` fails and
+   the deployment cannot start until one is attached.
 4. Configure all of these environment variables in the Deno Deploy project:
 
    | Variable                              | Value                                                               |
@@ -133,11 +135,11 @@ Set only one private-key variable. If both are present, Arshite uses
    those repositories. Add a `.github/pull.yml` file to each fork's default
    branch as described below.
 
-Deno KV is automatic on Deno Deploy; no separate database provisioning is
-required. `src/main.ts` registers one cron named `Arshite repository sync` on
-the `*/15 * * * *` schedule, so it runs every 15 minutes. Deno Deploy free-tier
-request, CPU, KV, and cron limits apply; review the current limits before
-production use.
+The KV database attached in the app's **Databases** tab backs `Deno.openKv()`;
+create or attach it before expecting a successful deployment. `src/main.ts`
+registers one cron named `Arshite repository sync` on the `*/15 * * * *`
+schedule, so it runs every 15 minutes. Deno Deploy free-tier request, CPU, KV,
+and cron limits apply; review the current limits before production use.
 
 ## Repository configuration
 
