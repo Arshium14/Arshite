@@ -1,4 +1,8 @@
-# Arshite
+<div align="center">
+  <img src="arshite.svg" alt="Arshite" width="300">
+</div>
+
+# <p align="center">Arshite</p>
 
 Arshite is a self-hosted GitHub App inspired by
 [`wei/pull`](https://github.com/wei/pull). It keeps fork branches synchronized
